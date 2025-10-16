@@ -19,8 +19,8 @@ msg_ok "Installed Dependencies"
 
 msg_info "Checking CPU Features"
 if lscpu | grep -q 'avx'; then
-  MONGODB_VERSION="7.0"
-  msg_ok "AVX detected: Using MongoDB 7.0"
+  MONGODB_VERSION="8.0"
+  msg_ok "AVX detected: Using MongoDB 8.0"
 else
   msg_error "No AVX detected: TP-Link Canceled Support for Old MongoDB for Debian 12\n https://www.tp-link.com/baltic/support/faq/4160/"
   exit 0
@@ -43,7 +43,7 @@ if ! dpkg -l | grep -q 'libssl1.1'; then
 fi
 
 msg_info "Installing MongoDB $MONGODB_VERSION"
-curl -fsSL "https://www.mongodb.org/static/pgp/server-${MONGODB_VERSION}.asc" | gpg --dearmor >/usr/share/keyrings/mongodb-server-${MONGODB_VERSION}.gpg
+curl -fsSL "https.//pgp.mongodb.com/server-${MONGODB_VERSION}.asc" | gpg --dearmor >/usr/share/keyrings/mongodb-server-${MONGODB_VERSION}.gpg
 cat <<EOF >/etc/apt/sources.list.d/mongodb-org-${MONGODB_VERSION}.sources
 Types: deb
 URIs: http://repo.mongodb.org/apt/debian
