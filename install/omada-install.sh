@@ -47,7 +47,7 @@ curl -fsSL "https.//pgp.mongodb.com/server-${MONGODB_VERSION}.asc" | gpg --dearm
 cat <<EOF >/etc/apt/sources.list.d/mongodb-org-${MONGODB_VERSION}.sources
 Types: deb
 URIs: http://repo.mongodb.org/apt/debian
-Suites: $(grep '^VERSION_CODENAME=' /etc/os-release | cut -d'=' -f2)/mongodb-org/${MONGODB_VERSION}
+Suites: bookworm/mongodb-org/${MONGODB_VERSION}
 Components: main
 Signed-By: /usr/share/keyrings/mongodb-server-${MONGODB_VERSION}.gpg
 EOF
